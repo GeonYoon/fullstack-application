@@ -1,0 +1,48 @@
+.row{
+    display: flex;
+    margin-bottom: 10px;
+    height: 70px;
+  }
+  
+.one{
+    text-align: center;
+    height: 50%;
+    margin-left: -11px;
+    margin-right: -11px;
+    padding-top: 5px;
+
+}
+
+.two{
+    background:#ddc9c8;
+    text-align: center;
+    height: 50%;
+    cursor: pointer;
+    margin-left: -11px;
+    margin-right: -11px;
+    padding-top: 5px;
+    border-radius: 8px;
+}
+.two:hover{
+    background:#c4b3b2;
+}
+
+
+.three{
+    background:white;
+}
+.four{
+    margin-top: 20px;
+    cursor: pointer;
+    background:#ddc9c8;
+    text-align: center;
+    border-radius: 8px;
+
+}
+.middle{
+    padding-top: 15px;
+}
+.four:hover{
+    background:#c4b3b2;
+}
+
