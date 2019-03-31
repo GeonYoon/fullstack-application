@@ -13,10 +13,11 @@ class HighLight extends Component {
                 <div className="col s7 three">
                     <div className="input-field col s12">
                         <input placeholder="Text you want to highlight" id="first_name" type="text" className="validate" />
+                        <i className="material-icons prefix custom-icon">search</i>
                     </div>
                 </div>
                 <div className="col s2 four">
-                    <div className="middle">Submit</div>
+                    <div className="middle">Sort by Score</div>
                 </div>
             </div>
         );
