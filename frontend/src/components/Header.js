@@ -6,7 +6,7 @@ import './css/header.css';
 const Header = () => {
     return (
         <div className="title">
-            <img className="logo" src={logo} />
+            <img className="logo" src={logo} alt="Not Found" />
             <span className="text">MESSAGE VIEWER</span>
         </div>          
     );
