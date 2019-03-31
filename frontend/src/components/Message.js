@@ -12,11 +12,11 @@ class Message extends Component {
         return (
             <div className="message">
                 <div className="col s3 message-image">
-                    <img src={avatar} />
+                    <div><img src={avatar} alt="Not Found"/></div>
                     {handle}
                 </div>
                 <div className="col s9 message-content">
-                    <div className="content-up">
+                    <div>
                         <span className="source-time">
                             {source} | {timestamp}
                         </span>
