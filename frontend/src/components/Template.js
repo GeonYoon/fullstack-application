@@ -10,7 +10,7 @@ const Template = ({highlight, messages}) => {
             <section className="form-wrapper">
                 { highlight }
             </section>
-            <section className="form-wrapper">
+            <section className="form-wrapper fixed">
                 { messages }
             </section>
         </main>
