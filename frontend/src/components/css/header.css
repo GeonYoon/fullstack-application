@@ -1,0 +1,16 @@
+.title {
+    padding: 10px;
+    font-size: 2.5rem;
+    font-weight: 100;
+    background: #ddc9c8;;
+    color: white;
+    vertical-align: baseline; 
+
+  }
+
+.text{
+    float: right !important ; 
+    font-size: 60%;
+    padding-top: 12px; 
+    color: rgb(70, 60, 60)
+}

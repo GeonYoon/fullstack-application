@@ -1,12 +1,12 @@
 import React from 'react';
 import './css/template.css';
+import Header from './Header'
+
 
 const Template = ({highlight, messages}) => {
     return (
         <main className="template">
-            <div className="title">
-                Signafire logo goes here
-            </div>
+            <Header />
             <section className="form-wrapper">
                 { highlight }
             </section>
