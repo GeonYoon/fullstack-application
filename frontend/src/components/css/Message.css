@@ -35,17 +35,36 @@
     }
     .trash:hover{
       background:#cf3505;
-  }
+    }
     .star{
+      background-color: rgb(161, 151, 7);
+      color: black;
+      /* border: 0.1px solid rgb(141, 133, 133); */
+      cursor: pointer;
+    }
+    .star:hover{
+      background:rgb(119, 111, 5);
+    }
+
+    .no-star{
       background-color: white;
       color: black;
       border: 0.1px solid rgb(141, 133, 133);
       cursor: pointer;
-
     }
-    .star:hover{
-      background:#c4b3b2;
-  }
+    .no-star:hover{
+      background:rgb(161, 151, 7);
+    }
+
+    .trashed-star{
+      background-color: rgb(161, 151, 7);
+      color: black;
+    }
+    .trashed-nostar{
+      background-color: white;
+      color: black;
+      border: 0.1px solid rgb(141, 133, 133);
+    }
 
 .content-down{
   padding-top: 10px 

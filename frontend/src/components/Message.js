@@ -6,9 +6,23 @@ class Message extends Component {
     // shouldComponentUpdate(nextProps, nextState) {
     //     return this.props.checked !== nextProps.checked;
     // }
-    
+  
+
+    whichButton(id,isStarred,isTrashed){
+        if(isTrashed === 0)
+            if(isStarred === 1) return <input className="message-button star"  onClick={() => this.props.updateStar(id,isStarred)} type="button" value="Starred!" />
+            else return <input className="message-button no-star"  onClick={() => this.props.updateStar(id,isStarred)} type="button" value="Star Message!" />
+        else
+            if(isStarred === 1) return <input className="message-button trashed-star" type="button" value="Starred!" />
+            else return <input className="message-button trashed-nostar" type="button" value="Star Message!" />
+    }
+
+    showTrashButton(isTrashed,deleteMessage,id){
+        if(isTrashed === 0) return <input className="message-button trash" onClick={() => deleteMessage(id)} type="button" value="Trash" />
+    }
+
     render() {
-        const {content,avatar,handle,source,timestamp} = this.props;
+        const {content,avatar,handle,source,timestamp,isStarred,id,deleteMessage,isTrashed} = this.props;
         return (
             <div className="message">
                 <div className="col s3 message-image">
@@ -20,10 +34,10 @@ class Message extends Component {
                         <span className="source-time">
                             {source} | {timestamp}
                         </span>
-                       
+    
                         <span className="buttons">
-                            <input className="message-button star" type="button" value="Star Message!" />
-                            <input className="message-button trash" type="button" value="Trash" />
+                            {this.whichButton(id,isStarred,isTrashed)}
+                            {this.showTrashButton(isTrashed,deleteMessage,id)}
                         </span>                      
                     </div>
                     <div className="content-down">{content}</div>

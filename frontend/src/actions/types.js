@@ -1,0 +1,6 @@
+export const FETCH_MESSAGE = 'FETCH_MESSAGE';
+export const SORT_MESSAGE = 'SORT_MESSAGE';
+export const HIGHLIGHT_MESSAGE = 'HIGHLIGHT_MESSAGE';
+export const STAR_MESSAGE = 'STAR_MESSAGE';
+export const DELETE_MESSAGE = 'DELETE_MESSAGE';
+export const CLICK_TRASH = 'CLICK_TRASH';

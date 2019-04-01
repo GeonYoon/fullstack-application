@@ -3,12 +3,19 @@ import './css/highlight.css';
 
 
 class HighLight extends Component {
+    
+    whichButton(showTrash,clickTrash){
+        if(showTrash === 0) return <div className="two" onClick={() => clickTrash()}>Show Trashed Messages </div>
+        else return <div className="two" onClick={() => clickTrash()}>Show Untrashed Messages </div>
+    }
+
     render() {
+        const {length,showTrash,clickTrash} = this.props;
         return (
             <div className="row">
                 <div className="col s3">
-                    <div className="one">Starred: 12 </div>
-                    <div className="two">Show Trashed Messages </div>
+                    <div className="one">Starred: {length} </div>
+                    {this.whichButton(showTrash,clickTrash)}
                 </div>
                 <div className="col s7 three">
                     <div className="input-field col s12">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
+import {fetchMessages,updateStar,clickTrash,deleteMessage} from '../actions';
 import Template from '../components/Template';
 import Highlight from '../components/Highlight';
 import MessageList from '../components/MessageList';
@@ -10,18 +10,32 @@ import MessageList from '../components/MessageList';
 class TemplateContainer extends Component {
     
     componentDidMount() {
-        // not now 
+      if(this.props.messages.length === 0){
+        console.log("This is first time. Call get method")
+        this.props.fetchMessages()
+      }
+      else{
+        console.log("message already exist")
+      }
     }
+    
     render() {
-      const {messages} = this.props
+      const {messages, length, updateStar,showTrash,clickTrash,deleteMessage} = this.props
       return (
           <Template 
               highlight = {( 
-                <Highlight />
+                <Highlight 
+                  length={length} 
+                  showTrash={showTrash}
+                  clickTrash = {clickTrash}
+                />
               )}
               messages = {( 
                 <MessageList 
                   messages = {messages}
+                  showTrash={showTrash}
+                  updateStar = {updateStar}
+                  deleteMessage = {deleteMessage}
                 />
               )}
           >
@@ -32,14 +46,25 @@ class TemplateContainer extends Component {
 
 const mapStateToProps = ({messages}) => {
   return {
-    messages : messages.messages
+    messages : messages.messages,
+    length: messages.length,
+    showTrash : messages.showTrash
   }
 };
 
-// const mapDispatchToProps = (dispatch) => ({
-//   toggle: (key) => {
-//     dispatch(toggle(key));
-//   }
-// });
+const mapDispatchToProps = (dispatch) => ({
+  fetchMessages: () => {
+    dispatch(fetchMessages());
+  },
+  updateStar: (id,value) => {
+    dispatch(updateStar(id,value));
+  },
+  clickTrash: () => {
+    dispatch(clickTrash());
+  },
+  deleteMessage: (id) => {
+    dispatch(deleteMessage(id))
+  }
+});
 
-export default withRouter(connect(mapStateToProps,null)(TemplateContainer));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(TemplateContainer));
