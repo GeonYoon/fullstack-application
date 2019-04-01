@@ -4,10 +4,11 @@ import './css/highlight.css';
 
 class HighLight extends Component {
     render() {
+        const {length} = this.props;
         return (
             <div className="row">
                 <div className="col s3">
-                    <div className="one">Starred: 12 </div>
+                    <div className="one">Starred: {length} </div>
                     <div className="two">Show Trashed Messages </div>
                 </div>
                 <div className="col s7 three">

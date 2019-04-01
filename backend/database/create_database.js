@@ -1,6 +1,6 @@
 // create database
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database(':memory:');
+var db = new sqlite3.Database(':memory:',{ Promise });
 const obj = require('./messages.json').messages
 
 console.log("Start to create Database")

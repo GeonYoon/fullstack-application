@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
+import {fetchMessages} from '../actions';
 import Template from '../components/Template';
 import Highlight from '../components/Highlight';
 import MessageList from '../components/MessageList';
@@ -10,19 +10,18 @@ import MessageList from '../components/MessageList';
 class TemplateContainer extends Component {
     
     componentDidMount() {
-        // not now 
+      this.props.fetchMessages()
     }
+    
     render() {
-      const {messages} = this.props
+      const {messages, length} = this.props
       return (
           <Template 
               highlight = {( 
-                <Highlight />
+                <Highlight length={length} />
               )}
               messages = {( 
-                <MessageList 
-                  messages = {messages}
-                />
+                <MessageList messages = {messages}/>
               )}
           >
           </Template>
@@ -30,16 +29,17 @@ class TemplateContainer extends Component {
     }
 }
 
-const mapStateToProps = ({messages}) => {
+const mapStateToProps = ({messages, length}) => {
   return {
-    messages : messages.messages
+    messages : messages.messages,
+    length: messages.length
   }
 };
 
-// const mapDispatchToProps = (dispatch) => ({
-//   toggle: (key) => {
-//     dispatch(toggle(key));
-//   }
-// });
+const mapDispatchToProps = (dispatch) => ({
+  fetchMessages: () => {
+    dispatch(fetchMessages());
+  }
+});
 
-export default withRouter(connect(mapStateToProps,null)(TemplateContainer));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(TemplateContainer));
