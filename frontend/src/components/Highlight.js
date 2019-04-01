@@ -10,7 +10,7 @@ class HighLight extends Component {
     }
 
     render() {
-        const {length,showTrash,clickTrash} = this.props;
+        const {length,showTrash,clickTrash,sortMessage} = this.props;
         return (
             <div className="row">
                 <div className="col s3">
@@ -24,7 +24,7 @@ class HighLight extends Component {
                     </div>
                 </div>
                 <div className="col s2 four">
-                    <div className="middle">Sort by Score</div>
+                    <div className="middle" onClick={() => sortMessage()}>Sort by Score</div>
                 </div>
             </div>
         );

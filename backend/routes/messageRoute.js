@@ -58,7 +58,9 @@ module.exports = (app,db) => {
   
     // Allows a user to sort messages by score
     app.get('/api/sort',async(req,res) => {
-        res.send();
+        const get_sql ='SELECT * FROM messages ORDER BY score DESC '
+        const rows = await db.allAsync(get_sql);
+        res.send(rows);
     });
 
     //Text highlighting
@@ -70,7 +72,6 @@ module.exports = (app,db) => {
     app.put('/api/star/:id',async(req,res) => {
         const {value}  = req.body;
         var id = req.params.id
-    
         const update_sql = `UPDATE messages SET isStarred = ${1-value} WHERE id = ${id}`
         const get_sql =`SELECT * FROM messages WHERE id = ${id}`
         await db.runAsync(update_sql);
@@ -81,7 +82,6 @@ module.exports = (app,db) => {
     // Able to delete messages
     app.put('/api/delete/:id',async(req,res) => {
         var id = req.params.id
-
         const update_sql = `UPDATE messages SET isTrashed = 1 WHERE id = ${id}`
         const get_sql =`SELECT * FROM messages WHERE id = ${id}`
         await db.runAsync(update_sql);

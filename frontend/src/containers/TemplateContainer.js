@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {fetchMessages,updateStar,clickTrash,deleteMessage} from '../actions';
+import {fetchMessages,updateStar,clickTrash,deleteMessage,sortMessage} from '../actions';
 import Template from '../components/Template';
 import Highlight from '../components/Highlight';
 import MessageList from '../components/MessageList';
@@ -20,7 +20,7 @@ class TemplateContainer extends Component {
     }
     
     render() {
-      const {messages, length, updateStar,showTrash,clickTrash,deleteMessage} = this.props
+      const {messages, length, updateStar,showTrash,clickTrash,deleteMessage,sortMessage} = this.props
       return (
           <Template 
               highlight = {( 
@@ -28,6 +28,7 @@ class TemplateContainer extends Component {
                   length={length} 
                   showTrash={showTrash}
                   clickTrash = {clickTrash}
+                  sortMessage = {sortMessage}
                 />
               )}
               messages = {( 
@@ -64,6 +65,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   deleteMessage: (id) => {
     dispatch(deleteMessage(id))
+  },
+  sortMessage: () => {
+    dispatch(sortMessage())
   }
 });
 
