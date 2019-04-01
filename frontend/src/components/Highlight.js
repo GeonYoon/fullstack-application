@@ -4,6 +4,29 @@ import './css/highlight.css';
 
 class HighLight extends Component {
     
+    constructor(props){
+        super(props);
+        this.state = {
+            textInput : ''
+        };
+        this.handleChange = this.handleChange.bind(this)
+      }
+
+    handleKeyPress = (e) => {
+        if(e.key === 'Enter') {
+            this.handleSubmit(e);
+        }
+    }
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.highlightMessage(this.state.textInput);
+        this.setState({ textInput:' '})
+    }
+
+    handleChange = e => {
+        this.setState({[e.target.name] : e.target.value});
+    };
+
     whichButton(showTrash,clickTrash){
         if(showTrash === 0) return <div className="two" onClick={() => clickTrash()}>Show Trashed Messages </div>
         else return <div className="two" onClick={() => clickTrash()}>Show Untrashed Messages </div>
@@ -19,8 +42,19 @@ class HighLight extends Component {
                 </div>
                 <div className="col s7 three">
                     <div className="input-field col s12">
-                        <input placeholder="Text you want to highlight" id="first_name" type="text" className="validate" />
-                        <i className="material-icons prefix custom-icon">search</i>
+                        <input placeholder="Text you want to highlight" 
+                               name="textInput"
+                               value={this.state.textInput}
+                               type="text" 
+                               className="validate" 
+                               onChange={this.handleChange}
+                               onKeyPress={this.handleKeyPress}
+                        />
+                        <i className="material-icons prefix custom-icon" 
+                           onClick={(e) => this.handleSubmit(e)}
+                        >
+                            search
+                        </i>
                     </div>
                 </div>
                 <div className="col s2 four">

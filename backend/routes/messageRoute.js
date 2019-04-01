@@ -39,6 +39,16 @@ module.exports = (app,db) => {
         });
     };
 
+    async function highlight(rows,text){
+        var newRows = await rows.map(function(row) {
+            // console.log("apple and apple".replace(new RegExp(text, 'g'),"<span className=\"highlighted-text\">fox</span>"))
+            const changed = row.content.replace(new RegExp(text, 'g'),`<span className=\"highlighted-text\">${text}</span>`)
+            // console.log(row)
+            return {...row,"content":changed }
+          });
+        return newRows
+    }
+
     function jsonParser(stringValue) {
         var string = JSON.stringify(stringValue);
         var objectValue = JSON.parse(string);
@@ -64,8 +74,12 @@ module.exports = (app,db) => {
     });
 
     //Text highlighting
-    app.get('/api/highlight',async(req,res) => {
-        res.send();
+    app.get('/api/highlight/:texts',async(req,res) => {
+        var texts = req.params.texts
+        const get_sql = 'SELECT * FROM messages'
+        var rows = await db.allAsync(get_sql);
+        const val = await highlight(rows,texts)
+        res.send(val);
     });
 
     //Able to toggle starring messages

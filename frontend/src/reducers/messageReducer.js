@@ -4,7 +4,8 @@ import {
   STAR_MESSAGE,
   DELETE_MESSAGE,
   CLICK_TRASH,
-  SORT_MESSAGE
+  SORT_MESSAGE,
+  HIGHLIGHT_MESSAGE
 } from '../actions/types';
 
 const InitialState = {
@@ -63,6 +64,12 @@ export default handleActions({
     return {
       ...state,
       messages : action.payload
+    }
+  },
+  [HIGHLIGHT_MESSAGE] : (state, action) => {
+    return {
+      ...state,
+      messages : action.payload,
     }
 },
 }, InitialState)
