@@ -11,3 +11,8 @@ export const fetchMessages = () => async dispatch => {
     const res = await axios.get('/api/messages');
     dispatch({type: FETCH_MESSAGE, payload: res.data});
 };
+
+export const updateStar = (id,value) => async dispatch => {
+    const res = await axios.put(`/api/star/${id}`,{value})
+    dispatch({type: STAR_MESSAGE, payload: res.data});
+}

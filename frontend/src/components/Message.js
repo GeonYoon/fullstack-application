@@ -6,9 +6,15 @@ class Message extends Component {
     // shouldComponentUpdate(nextProps, nextState) {
     //     return this.props.checked !== nextProps.checked;
     // }
-    
+  
+
+    whichButton(id,isStarred){
+        if(isStarred === 1) return <input className="message-button star"  onClick={() => this.props.updateStar(id,isStarred)} type="button" value="Starred!" />
+        else return <input className="message-button no-star"  onClick={() => this.props.updateStar(id,isStarred)} type="button" value="Star Message!" />
+    }
+
     render() {
-        const {content,avatar,handle,source,timestamp} = this.props;
+        const {content,avatar,handle,source,timestamp,isStarred,id} = this.props;
         return (
             <div className="message">
                 <div className="col s3 message-image">
@@ -20,9 +26,9 @@ class Message extends Component {
                         <span className="source-time">
                             {source} | {timestamp}
                         </span>
-                       
+    
                         <span className="buttons">
-                            <input className="message-button star" type="button" value="Star Message!" />
+                            {this.whichButton(id,isStarred)}
                             <input className="message-button trash" type="button" value="Trash" />
                         </span>                      
                     </div>

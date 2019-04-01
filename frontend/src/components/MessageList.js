@@ -7,13 +7,14 @@ class MessageList extends Component {
     //     return this.props.todos !== nextProps.todos;
     // }
     render() {
-        const {messages} = this.props;
+        const {messages,updateStar} = this.props;
         const messageList = messages.map(
             message => {
                 const {id} = message
                 return (
                     <Message 
                         key = {id}
+                        updateStar = {updateStar}
                         {...message}
                     />
                 )
