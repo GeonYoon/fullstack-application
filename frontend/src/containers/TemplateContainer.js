@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {fetchMessages,updateStar} from '../actions';
+import {fetchMessages,updateStar,clickTrash,deleteMessage} from '../actions';
 import Template from '../components/Template';
 import Highlight from '../components/Highlight';
 import MessageList from '../components/MessageList';
@@ -20,16 +20,22 @@ class TemplateContainer extends Component {
     }
     
     render() {
-      const {messages, length, updateStar} = this.props
+      const {messages, length, updateStar,showTrash,clickTrash,deleteMessage} = this.props
       return (
           <Template 
               highlight = {( 
-                <Highlight length={length} />
+                <Highlight 
+                  length={length} 
+                  showTrash={showTrash}
+                  clickTrash = {clickTrash}
+                />
               )}
               messages = {( 
                 <MessageList 
                   messages = {messages}
+                  showTrash={showTrash}
                   updateStar = {updateStar}
+                  deleteMessage = {deleteMessage}
                 />
               )}
           >
@@ -38,10 +44,11 @@ class TemplateContainer extends Component {
     }
 }
 
-const mapStateToProps = ({messages, length}) => {
+const mapStateToProps = ({messages}) => {
   return {
     messages : messages.messages,
-    length: messages.length
+    length: messages.length,
+    showTrash : messages.showTrash
   }
 };
 
@@ -51,6 +58,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateStar: (id,value) => {
     dispatch(updateStar(id,value));
+  },
+  clickTrash: () => {
+    dispatch(clickTrash());
+  },
+  deleteMessage: (id) => {
+    dispatch(deleteMessage(id))
   }
 });
 

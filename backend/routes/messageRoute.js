@@ -79,8 +79,14 @@ module.exports = (app,db) => {
     });  
 
     // Able to delete messages
-    app.delete('/api/messages/:id',async(req,res) => {
-        res.send();
+    app.put('/api/delete/:id',async(req,res) => {
+        var id = req.params.id
+
+        const update_sql = `UPDATE messages SET isTrashed = 1 WHERE id = ${id}`
+        const get_sql =`SELECT * FROM messages WHERE id = ${id}`
+        await db.runAsync(update_sql);
+        const row = await db.getAsync(get_sql)
+        res.send({"message" : row});
     });   
 
     

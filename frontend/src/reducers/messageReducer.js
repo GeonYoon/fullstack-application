@@ -1,13 +1,15 @@
 import { handleActions } from 'redux-actions';
 import {
   FETCH_MESSAGE,
-  STAR_MESSAGE
+  STAR_MESSAGE,
+  DELETE_MESSAGE,
+  CLICK_TRASH
 } from '../actions/types';
 
 const InitialState = {
-    // mock-up data
     messages : [],
-    length : ''
+    length : '',
+    showTrash: 0
 }
 
 function changeLength(star,length){
@@ -15,20 +17,45 @@ function changeLength(star,length){
   else return length-1
 }
 
+function changedLengthTrash(star,length){
+  if(star === 1) return length -1
+  else return length
+}
+
 export default handleActions({
   [FETCH_MESSAGE] : (state, action) => {
       return {
+        ...state,
         messages : action.payload.messages,
-        length : action.payload.length
+        length : action.payload.length,
+
       }
   },
   [STAR_MESSAGE] : (state, action) => {
     const id = action.payload.message.id
     const star = action.payload.message.isStarred
     return {
+        ...state,
         messages: state.messages.map(
           (message) => message.id === id ? {...message, isStarred: star}: message),
-        length: changeLength(star,state.length)
+        length: changeLength(star,state.length),
+
     }
-},
+  },
+  [DELETE_MESSAGE] : (state, action) => {
+    const id = action.payload.message.id
+    const trash = action.payload.message.isTrashed
+    return {
+        ...state,
+        messages: state.messages.map(
+          (message) => message.id === id ? {...message, isTrashed: trash}: message),
+        length: changedLengthTrash(action.payload.message.isStarred,state.length),
+    }
+  },
+  [CLICK_TRASH] : (state, action) => {
+    return {
+      ...state,
+      showTrash: 1-state.showTrash
+    }
+  }
 }, InitialState)
