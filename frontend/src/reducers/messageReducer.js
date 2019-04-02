@@ -71,5 +71,5 @@ export default handleActions({
       ...state,
       messages : action.payload,
     }
-},
+  },
 }, InitialState)

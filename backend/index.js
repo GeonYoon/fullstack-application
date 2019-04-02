@@ -11,6 +11,12 @@ const db = require('./database/create_database')
 app.use(cors())
 app.use(bodyParser.json());
 
+//test
+const b = "AA"
+const a = "aa"
+console.log(a.toUpperCase === b.toUpperCase)
+console.log(a)
+
 require('./routes/messageRoute')(app,db);
 
 app.listen(5000, () => {

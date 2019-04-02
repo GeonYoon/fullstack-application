@@ -34,24 +34,33 @@ module.exports = (app,db) => {
                 if (err)
                     reject(err);
                 else
+                    // resolve(row).them(row=>{return row});
                     resolve(row);
             });
         });
     };
 
     async function highlight(rows,text){
-        var newRows = await rows.map(function(row) {
-            // console.log("apple and apple".replace(new RegExp(text, 'g'),"<span className=\"highlighted-text\">fox</span>"))
-            const changed = row.content.replace(new RegExp(text, 'g'),`<span className=\"highlighted-text\">${text}</span>`)
-            // console.log(row)
+        var newRows =  rows.map(  function(row) {
+            const changed =  split2(row.content,text)
             return {...row,"content":changed }
           });
         return newRows
     }
 
+    function split2 (content,text){
+        const res = content.split(new RegExp(`(${text})`, 'ig'))
+        var ki = 0;
+        const changed = res.map( function(item) {
+            if(item.toUpperCase() === text.toUpperCase()) return `<span key={${ki++}} className=\"highlighted-text\">${item}</span>`
+            else return item
+        })
+        return changed
+    }
+        
     function jsonParser(stringValue) {
         var string = JSON.stringify(stringValue);
-        var objectValue = JSON.parse(string);
+        var objectValue = JSON.parse(string); 
         return objectValue['Count(*)'];
      }
 
@@ -75,11 +84,12 @@ module.exports = (app,db) => {
 
     //Text highlighting
     app.get('/api/highlight/:texts',async(req,res) => {
-        var texts = req.params.texts
+        const text = req.params.texts
+        const trimed_text = text.trim();
         const get_sql = 'SELECT * FROM messages'
-        var rows = await db.allAsync(get_sql);
-        const val = await highlight(rows,texts)
-        res.send(val);
+        const rows = await db.allAsync(get_sql);
+        const data =  await highlight(rows,trimed_text)
+        res.send(data);
     });
 
     //Able to toggle starring messages

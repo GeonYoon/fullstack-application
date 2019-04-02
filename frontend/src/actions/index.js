@@ -33,5 +33,4 @@ export const sortMessage = () => async dispatch => {
 export const highlightMessage = (texts) => async dispatch => {
     const res = await axios.get(`/api/highlight/${texts}`)
     dispatch({type: HIGHLIGHT_MESSAGE, payload: res.data});
-}
-
+} 

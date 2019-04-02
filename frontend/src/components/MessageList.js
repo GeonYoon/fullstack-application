@@ -9,7 +9,7 @@ class MessageList extends Component {
     render() {
         const {messages,updateStar,showTrash,deleteMessage} = this.props;
         let filtered_message = messages.filter(m=>m.isTrashed === showTrash);
-
+        // console.log(messageList)
         const messageList = filtered_message.map(
             message => {
                 const {id} = message
