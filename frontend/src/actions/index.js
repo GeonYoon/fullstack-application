@@ -7,7 +7,6 @@ import {FETCH_MESSAGE,
         CLICK_TRASH
 } from './types';
 
-
 export const fetchMessages = () => async dispatch => {
     const res = await axios.get('/api/messages');
     dispatch({type: FETCH_MESSAGE, payload: res.data});
@@ -24,3 +23,13 @@ export const deleteMessage = (id) => async dispatch => {
 }
 
 export const clickTrash = () => ({type: CLICK_TRASH});
+
+export const sortMessage = () => async dispatch => {
+    const res = await axios.get('/api/sort')
+    dispatch({type: SORT_MESSAGE, payload: res.data});
+}
+
+export const highlightMessage = (texts) => async dispatch => {
+    const res = await axios.get(`/api/highlight/${texts}`)
+    dispatch({type: HIGHLIGHT_MESSAGE, payload: res.data});
+} 

@@ -1,12 +1,9 @@
 import React, { Component } from  'react';
+import Parser from 'html-react-parser';    
+import { DateConverter } from '../utils/DateConverter'
 import './css/Message.css';
 
 class Message extends Component {
-     
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return this.props.checked !== nextProps.checked;
-    // }
-  
 
     whichButton(id,isStarred,isTrashed){
         if(isTrashed === 0)
@@ -21,6 +18,17 @@ class Message extends Component {
         if(isTrashed === 0) return <input className="message-button trash" onClick={() => deleteMessage(id)} type="button" value="Trash" />
     }
 
+    highlightHelper(content){
+        if(typeof content === 'string') return content
+        else{
+            var val = content.map( function(item) {
+                if(item.search("</span>")) return Parser(item)
+                else return item
+            })
+            return val
+        }
+    }
+    
     render() {
         const {content,avatar,handle,source,timestamp,isStarred,id,deleteMessage,isTrashed} = this.props;
         return (
@@ -32,7 +40,7 @@ class Message extends Component {
                 <div className="col s9 message-content">
                     <div>
                         <span className="source-time">
-                            {source} | {timestamp}
+                            {source} | {DateConverter(timestamp)}
                         </span>
     
                         <span className="buttons">
@@ -40,7 +48,7 @@ class Message extends Component {
                             {this.showTrashButton(isTrashed,deleteMessage,id)}
                         </span>                      
                     </div>
-                    <div className="content-down">{content}</div>
+                    <div className="content-down">{this.highlightHelper(content)}</div>
                 </div>
           </div>
         );

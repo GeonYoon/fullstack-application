@@ -3,7 +3,9 @@ import {
   FETCH_MESSAGE,
   STAR_MESSAGE,
   DELETE_MESSAGE,
-  CLICK_TRASH
+  CLICK_TRASH,
+  SORT_MESSAGE,
+  HIGHLIGHT_MESSAGE
 } from '../actions/types';
 
 const InitialState = {
@@ -57,5 +59,17 @@ export default handleActions({
       ...state,
       showTrash: 1-state.showTrash
     }
-  }
+  },
+  [SORT_MESSAGE] : (state, action) => {
+    return {
+      ...state,
+      messages : action.payload
+    }
+  },
+  [HIGHLIGHT_MESSAGE] : (state, action) => {
+    return {
+      ...state,
+      messages : action.payload,
+    }
+  },
 }, InitialState)
