@@ -1,5 +1,5 @@
+// This function formats date string.
 export function DateConverter(str){
-    // create dictionary 
     var dic = {}
     dic['01'] = 'Jan'
     dic['02'] = 'Feb'

@@ -7,7 +7,6 @@ import {FETCH_MESSAGE,
         CLICK_TRASH
 } from './types';
 
-
 export const fetchMessages = () => async dispatch => {
     const res = await axios.get('/api/messages');
     dispatch({type: FETCH_MESSAGE, payload: res.data});

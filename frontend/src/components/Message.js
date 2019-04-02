@@ -4,11 +4,6 @@ import { DateConverter } from '../utils/DateConverter'
 import './css/Message.css';
 
 class Message extends Component {
-     
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return this.props.checked !== nextProps.checked;
-    // }
-  
 
     whichButton(id,isStarred,isTrashed){
         if(isTrashed === 0)
