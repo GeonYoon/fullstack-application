@@ -1,7 +1,7 @@
 module.exports = (app,db) => {
     
     // async all
-    db.allAsync = function (sql) {
+    db.allAsync = function (sql,key) {
         var that = this;
         return new Promise(function (resolve, reject) {
             that.all(sql, function (err, row) {
@@ -34,28 +34,22 @@ module.exports = (app,db) => {
                 if (err)
                     reject(err);
                 else
-                    // resolve(row).them(row=>{return row});
                     resolve(row);
             });
         });
     };
 
     async function highlight(rows,text){
-        var newRows =  rows.map(  function(row) {
-            const changed =  split2(row.content,text)
-            return {...row,"content":changed }
+        var newRows =  rows.map(function(row) {
+            const splited_row = row.content.split(new RegExp(`(${text})`, 'ig'))
+            var ki = 0;
+            const finalrow = splited_row.map(function(item) {
+                if(item.toUpperCase() === text.toUpperCase()) return `<span key={${ki++}} className=\"highlighted-text\">${item}</span>`
+                else return item
+            })
+            return {...row,"content":finalrow }
           });
         return newRows
-    }
-
-    function split2 (content,text){
-        const res = content.split(new RegExp(`(${text})`, 'ig'))
-        var ki = 0;
-        const changed = res.map( function(item) {
-            if(item.toUpperCase() === text.toUpperCase()) return `<span key={${ki++}} className=\"highlighted-text\">${item}</span>`
-            else return item
-        })
-        return changed
     }
         
     function jsonParser(stringValue) {
