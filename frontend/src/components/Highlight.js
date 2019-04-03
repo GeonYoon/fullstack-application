@@ -32,8 +32,13 @@ class HighLight extends Component {
         else return <div className="two" onClick={() => clickTrash()}>Show Untrashed Messages </div>
     }
 
+    sortButton(areSorted,sortMessage){
+        if(areSorted === true) return <div className="middle">Sorted!</div>
+        else return <div className="middle" onClick={() => sortMessage()}>Sort by Score</div>
+    }
+
     render() {
-        const {length,showTrash,clickTrash,sortMessage} = this.props;
+        const {length,showTrash,clickTrash,sortMessage,areSorted} = this.props;
         return (
             <div className="row">
                 <div className="col s3">
@@ -58,7 +63,7 @@ class HighLight extends Component {
                     </div>
                 </div>
                 <div className="col s2 four">
-                    <div className="middle" onClick={() => sortMessage()}>Sort by Score</div>
+                    {this.sortButton(areSorted,sortMessage)}
                 </div>
             </div>
         );

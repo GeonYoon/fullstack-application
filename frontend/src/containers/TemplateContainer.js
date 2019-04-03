@@ -10,17 +10,11 @@ import MessageList from '../components/MessageList';
 class TemplateContainer extends Component {
     
     componentDidMount() {
-      if(this.props.messages.length === 0){
-        console.log("This is first time. Call get method")
-        this.props.fetchMessages()
-      }
-      else{
-        console.log("message already exist")
-      }
+      if(this.props.messages.length === 0) this.props.fetchMessages()
     }
     
     render() {
-      const {messages, length, updateStar,showTrash,clickTrash,deleteMessage,sortMessage,highlightMessage} = this.props
+      const {messages, length, updateStar,showTrash,clickTrash,deleteMessage,sortMessage,highlightMessage,areSorted} = this.props
       return (
           <Template 
               highlight = {( 
@@ -30,6 +24,7 @@ class TemplateContainer extends Component {
                   clickTrash = {clickTrash}
                   sortMessage = {sortMessage}
                   highlightMessage = {highlightMessage}
+                  areSorted={areSorted}
                 />
               )}
               messages = {( 
@@ -50,7 +45,8 @@ const mapStateToProps = ({messages}) => {
   return {
     messages : messages.messages,
     length: messages.length,
-    showTrash : messages.showTrash
+    showTrash : messages.showTrash,
+    areSorted: messages.areSorted
   }
 };
 
