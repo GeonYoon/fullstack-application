@@ -15,6 +15,7 @@ This is a Signafire Internship Challenge created by ***Geon Yoon***. Since I am 
 - When the user refreshes the page:
     - Messages become unsorted.
     - All the highlights disappear.
+- You cannot unsort the messages by clicking the button because there is no point of unsorting the messages.
 
 #### Backend
 
