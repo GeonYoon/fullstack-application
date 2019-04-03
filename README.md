@@ -16,12 +16,14 @@ This is a Signafire Internship Challenge created by ***Geon Yoon***. Since I am 
     - Messages become unsorted.
     - All the highlights disappear.
 - You cannot unsort the messages by clicking the button because there is no point of unsorting the messages.
+- The frontend runs on localhost:3000
 
 #### Backend
 
 - The database is last until the backend server is running. Since I used the In-memory database, the database is reset when the server is restarted or shut down. Therefore, all the changes made by the user in the frontend do not disappear as long as the server is running.
 - When the message is clicked to be starred(unstarred) or trashed, the server only sends the modified message so that the frontend updates one message instead of updating entire messages.
-- The backend does text highlighting. The frontend only renders the messages. 
+- The backend does text highlighting. The frontend only renders the messages.
+- The backend runs on localhost:5000
 
 ## How To install
 Clone the repository and get inside of the root directory.
