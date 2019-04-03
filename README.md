@@ -52,7 +52,7 @@ npm run dev
 ## Built With
 * [React](https://reactjs.org/) - Used to build client side
 * [Redux](http://redux.js.org/docs/basics/UsageWithReact.html) - Predictable state container for JavaScript apps
-* [Node.js](https://nodejs.org/en/) - Used to build client side 
+* [Node.js](https://nodejs.org/en/) - Used to build server side 
 * [Express.js](http://expressjs.com/) - Framework for Node.js
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 * [SQLite](https://www.sqlite.org/index.html) - Database
