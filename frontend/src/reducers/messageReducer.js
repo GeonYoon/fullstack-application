@@ -11,7 +11,8 @@ import {
 const InitialState = {
     messages : [],
     length : '',
-    showTrash: 0
+    showTrash: 0,
+    areSorted: false
 }
 
 function changeLength(star,length){
@@ -28,6 +29,7 @@ export default handleActions({
   [FETCH_MESSAGE] : (state, action) => {
       return {
         ...state,
+        areSorted : false,
         messages : action.payload.messages,
         length : action.payload.length,
 
@@ -63,13 +65,14 @@ export default handleActions({
   [SORT_MESSAGE] : (state, action) => {
     return {
       ...state,
+      areSorted: true,
       messages : action.payload
     }
   },
   [HIGHLIGHT_MESSAGE] : (state, action) => {
     return {
       ...state,
-      messages : action.payload,
+      messages: action.payload
     }
   },
 }, InitialState)

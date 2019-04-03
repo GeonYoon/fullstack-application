@@ -37,11 +37,13 @@
     background:#ddc9c8;
     text-align: center;
     border-radius: 8px;
+    padding-top: 15px;
 
 }
 .middle{
     padding-top: 15px;
 }
+
 .four:hover{
     background:#c4b3b2;
 }

@@ -1,3 +1,4 @@
+// functions to run database queries
 module.exports = {
     // async all
     all: function all (db, sql) {

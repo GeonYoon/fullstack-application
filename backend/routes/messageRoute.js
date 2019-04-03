@@ -2,18 +2,19 @@ const helper = require('../utils/helper');
 const query = require('../utils/query');
 
 module.exports = (app,db) => {
-    // A GET request that returns all data as modeled in messages & Display length of messages starred
+
+    // Returns all data as modeled in messages and the length
     app.get('/api/messages',async(req,res) => {
-        const length_sql = 'SELECT Count(*) FROM messages WHERE isStarred = 1'
         const get_sql = 'SELECT * FROM messages'
+        const length_sql = 'SELECT Count(*) FROM messages WHERE isStarred = 1'
         const length = await query.all(db,length_sql);
         const rows = await query.all(db,get_sql);
         res.send({"messages" : rows, "length": helper.jsonParser(length[0])});
     });
-  
+
     // Allows a user to sort messages by score
     app.get('/api/sort',async(req,res) => {
-        const get_sql ='SELECT * FROM messages ORDER BY score DESC '
+        const get_sql = 'SELECT * FROM messages ORDER BY score DESC '
         const rows = await query.all(db,get_sql);
         res.send(rows);
     });
