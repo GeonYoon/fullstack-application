@@ -37,7 +37,7 @@ Get into the backend directory and install all the dependencies before you run t
 ```
 cd backend
 npm install
-npm start
+npm run dev 
 ```
 
 ### Frontend Installation
@@ -45,7 +45,7 @@ Get into the frontend directory and install all the dependencies before you run 
 ```
 cd frontend
 npm install
-npm run dev
+npm start
 ```
 
 
