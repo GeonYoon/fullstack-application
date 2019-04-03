@@ -52,6 +52,9 @@ npm run dev
 * [Node.js](https://nodejs.org/en/) - Used to build client side 
 * [Express.js](http://expressjs.com/) - Framework for Node.js
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+* [SQLite](https://www.sqlite.org/index.html) - Database
+
+
 
 ## Authors
 * **Geon Yoon ** - *Initial work* - [GeonYoon](https://github.com/GeonYoon)
