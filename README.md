@@ -18,7 +18,7 @@ This is a Signafire Internship Challenge created by ***Geon Yoon***. Since I am 
 
 #### Backend
 
-- The database is last until the backend server is running. Since I used the In-memory database, the database is reset when the server is restarted or shut down. Therefore, all the changes made by the user in the frontend does not disappear as long as the server is running.
+- The database is last until the backend server is running. Since I used the In-memory database, the database is reset when the server is restarted or shut down. Therefore, all the changes made by the user in the frontend do not disappear as long as the server is running.
 - When the message is clicked to be starred(unstarred) or trashed, the server only sends the modified message so that the frontend updates one message instead of updating entire messages.
 - The backend does text highlighting. The frontend only renders the messages. 
 
