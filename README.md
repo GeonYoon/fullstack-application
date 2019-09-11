@@ -28,8 +28,8 @@ This is a full stack application created by ***Geon Yoon***.I programmed both th
 ## How To install
 Clone the repository and get inside of the root directory.
 ```
-git clone git@github.com:GeonYoon/Internship-challenge.git
-cd Internship-challenge
+git clone git@github.com:GeonYoon/fullstackp-application.git
+cd fullstack-application
 ```
 
 ### Backend Installation 
