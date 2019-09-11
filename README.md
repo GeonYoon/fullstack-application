@@ -1,6 +1,6 @@
-#  Signafire Internship Interview Challenge
-
-This is a Signafire Internship Challenge created by ***Geon Yoon***. Since I am a **full-stack**, I programmed both the frontend and the backend.  I could have created the application more straightforwardly so that I can decrease the number of HTTP requests and the size of the codes. However, my focus was on how to develop the application in a well-organized way so that this application can be expanded quickly in the real world scenario and modified efficiently. I emphasize separating the functionality of a program into independent, interchangeable modules, such that each contains everything necessary to execute only one aspect of the desired functionality.
+#  Full stack application
+ 
+This is a full stack application created by ***Geon Yoon***.I programmed both the frontend and the backend.  I could have created the application more straightforwardly so that I can decrease the number of HTTP requests and the size of the codes. However, my focus was on how to develop the application in a well-organized way so that this application can be expanded quickly in the real world scenario and modified efficiently. I emphasize separating the functionality of a program into independent, interchangeable modules, such that each contains everything necessary to execute only one aspect of the desired functionality.
 
 ![](./map.png)
 
